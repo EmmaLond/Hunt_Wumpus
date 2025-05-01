@@ -5,6 +5,23 @@ class Player:
         self.arrows = 3
         self.alive = True
         
+    def move(self, space):
+        #if the space chosen is within the connections
+        if room in self.current_space.connections:
+            #set the current space to space
+            self.current_space = space
+        else:
+            raise ValueError("Invalid move")
+            
+        
+    def shoot(self):
+        if self.arrows > 0:
+            self.arrows -= 1
+            return True
+        else:
+            return False
+        
+        
 class Space:
     def__init__(self, spaceID, connections)
     self.id = spaceID
@@ -39,8 +56,9 @@ class Game:
         room[16].connections = room[15],room[1]
         
     def movePlayer(self, newSpaceId):
+        #player can only move to connecting spaces
+        
         
     def shootArrow(self, newSpaceId):
-        
         
         
