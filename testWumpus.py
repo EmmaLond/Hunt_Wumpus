@@ -19,7 +19,20 @@ class TestWumpus(unittest.TestCase):
         with self.assertRaises(ValueError):
             player.move(b)
         
-    #def testShootArrow(self):
+    def testShootArrow(self):
+        player = Player(Space(0))
+        self.assertTrue(player.shoot())
+        self.assertTrue(player.shoot())
+        self.assertTrue(player.shoot())
+        self.assertFalse(player.shoot())
+        self.assertEqual(player.arrows, 0)
+        
+    def testBoardInitialization(self):
+        board = Board()
+        self.assertEqual(len(board.spaces), 17)
+        self.assertTrue(any(s.wumpus for s in board.spaces))
+        self.assertEqual(sum(1 for s in board.spaces if s.pit), 2)
+        self.assertEqual(sum(1 for s in board.spaces if s.bats), 1)
         
     #def testZeroArrows(self):
         

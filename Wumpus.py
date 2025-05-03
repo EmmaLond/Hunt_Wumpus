@@ -50,37 +50,37 @@ class Board:
         spaces = self.spaces
         #list the space connections
         spaces[0].connections = spaces[1],spaces[2]
-        space[1].connections = space[0],space[16]
-        space[2].connections = space[3],space[16]
-        space[3].connections = space[2],space[4]
-        space[4].connections = space[3]
-        space[5].connections = space[6],space[7]
-        space[6].connections = space[5]
-        space[7].connections = space[5],space[8]
-        space[8].connections = space[7],space[9], space[11]
-        space[9].connections = space[8],space[10]
-        space[10].connections = space[9], space[11]
-        space[11].connections = space[8], space[10], space[12]
-        space[12].connections = space[11], space[13]
-        space[13].connections = space[14],space[12]
-        space[14].connections = space[11],space[13],space[15],
-        space[15].connections = space[14], space[16]
-        space[16].connections = space[15],space[1]
+        spaces[1].connections = spaces[0],spaces[16]
+        spaces[2].connections = spaces[3],spaces[16]
+        spaces[3].connections = spaces[2],spaces[4]
+        spaces[4].connections = spaces[3]
+        spaces[5].connections = spaces[6],spaces[7]
+        spaces[6].connections = spaces[5]
+        spaces[7].connections = spaces[5],spaces[8]
+        spaces[8].connections = spaces[7],spaces[9], spaces[11]
+        spaces[9].connections = spaces[8],spaces[10]
+        spaces[10].connections = spaces[9], spaces[11]
+        spaces[11].connections = spaces[8], spaces[10], spaces[12]
+        spaces[12].connections = spaces[11], spaces[13]
+        spaces[13].connections = spaces[14],spaces[12]
+        spaces[14].connections = spaces[11],spaces[13],spaces[15],
+        spaces[15].connections = spaces[14], spaces[16]
+        spaces[16].connections = spaces[15],spaces[1]
     
     def placeItems(self):
         availableSpaces = list(range(1,16))
         
-        random.shuffle(available_indices)
+        random.shuffle(availableSpaces)
 
         wumpusIndex = availableSpaces.pop()
         pit1Index = availableSpaces.pop()
         pit2Index = availableSpaces.pop()
         batIndex = availableSpaces.pop()
 
-        self.spaces[wumpusIndex].hasWumpus = True
-        self.spaces[pit1Index].hasPit = True
-        self.spaces[pit2Index].hasPit = True
-        self.spaces[batIndex].hasBats = True
+        self.spaces[wumpusIndex].wumpus = True
+        self.spaces[pit1Index].pit = True
+        self.spaces[pit2Index].pit = True
+        self.spaces[batIndex].bats = True
             
             
     def getSpace(self, spaceId):
