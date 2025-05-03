@@ -33,8 +33,22 @@ class TestWumpus(unittest.TestCase):
         self.assertTrue(any(s.wumpus for s in board.spaces))
         self.assertEqual(sum(1 for s in board.spaces if s.pit), 2)
         self.assertEqual(sum(1 for s in board.spaces if s.bats), 1)
+    
+    def test_shoot_arrow_hits_wumpus(self):
+        game = Game()
+        wumpusSpace = Space(3)
+        wumpusSpace.wumpus = True
+        game.board.spaces = [Space(i) for i in range(5)]
+        game.board.spaces[3] = wumpusSpace
+        result = game.shootArrow(3)
+        self.assertIn("win", result.lower())
         
-    #def testZeroArrows(self):
+    def test_shoot_arrow_misses(self):
+        game = Game()
+        for s in game.board.spaces:
+            s.wumpus = False
+        result = game.shootArrow(1)
+        self.assertIn("missed", result.lower())
         
     #def testCheckWumpusSpace(self):
         

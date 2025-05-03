@@ -91,25 +91,25 @@ class Game:
     def __init__(self):
         self.board = Board()
         self.player = Player(self.board.getSpace(0))
-        self.wumpusspace = self.wumpusSpace()
+        self.wumpusSpace = self.wumpusSpace()
         
     def wumpusSpace(self):
         #returns the value of the space that has the wumpus
         for space in self.board.spaces:
-            if space.hasWumpus:
+            if space.wumpus:
                 return space
         return None
         
         
     def checkSpace(self):
         space = self.player.currentSpace
-        if space.hasWumpus ==True:
+        if space.wumpus ==True:
             self.player.alive = False
             return "You have been eaten by the Wumpus!"
-        elif space.hasPit == True:
+        elif space.pit == True:
             self.player.alive = False
             return "You fell into a pit!"
-        elif space.hasBats:
+        elif space.bats:
             self.player.currentSpace = random.choice(self.board.spaces)
         
     def movePlayer(self, spaceId):
@@ -117,11 +117,11 @@ class Game:
         self.player.move(targetSpace)
         return self.checkSpace()
 
-    def shoot_arrow(self, spaceId):
+    def shootArrow(self, spaceId):
         if not self.player.shoot():
             return "No arrows left!"
 
-        if self.cave.getSpace(spaceId).has_wumpus:
+        if self.board.getSpace(spaceId).wumpus:
             return "You killed the Wumpus! You win!"
         else:
             return "Missed. The Wumpus might wake up..."
