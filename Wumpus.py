@@ -89,9 +89,16 @@ class Board:
         
 class Game:
     def__init__(self):
+        self.cave = Cave()
+        self.player = Player(self.cave.getSpace(0))
+        self.wumpusRoom = self.wumpusSpace()
         
     def wumpusSpace(self):
         #returns the value of the space that has the wumpus
+        for room in self.cave.rooms:
+            if room.has_wumpus:
+                return room
+        return None
         
         
     def checkSpace(self):
