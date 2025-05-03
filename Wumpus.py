@@ -9,9 +9,9 @@ class Player:
         
     def move(self, space):
         #if the space chosen is within the connections
-        if space in self.current_space.connections:
+        if space in self.currentSpace.connections:
             #set the current space to space
-            self.current_space = space
+            self.currentSpace = space
         else:
             raise ValueError("Invalid move")
             
@@ -32,22 +32,22 @@ class Space:
         self.pit = False
         self.bats = False
         
-    def connect(self, other_space):
-        if other_space not in self.connections:
-            self.connections.append(other_space)
-            other_space.connections.append(self) 
+    def connect(self, otherSpace):
+        if otherSpace not in self.connections:
+            self.connections.append(otherSpace)
+            otherSpace.connections.append(self) 
 
     
     
 class Board:
     def __init__(self):
-        self.spaces = [Space(i) for i in range (15)]
+        self.spaces = [Space(i) for i in range (17)]
         self.connectSpace()
         self.placeItems()
         
     def connectSpace(self):
         #for loop that creates the amount of spaces
-        spaces = [Space[i] for i in range (15)]
+        spaces = self.spaces
         #list the space connections
         spaces[0].connections = spaces[1],spaces[2]
         space[1].connections = space[0],space[16]
@@ -77,7 +77,7 @@ class Board:
         pit2Index = availableSpaces.pop()
         batIndex = availableSpaces.pop()
 
-        self.spaces[wumpus_index].hasWumpus = True
+        self.spaces[wumpusIndex].hasWumpus = True
         self.spaces[pit1Index].hasPit = True
         self.spaces[pit2Index].hasPit = True
         self.spaces[batIndex].hasBats = True
@@ -96,14 +96,14 @@ class Game:
     def wumpusSpace(self):
         #returns the value of the space that has the wumpus
         for space in self.board.spaces:
-            if space.has_wumpus:
+            if space.hasWumpus:
                 return space
         return None
         
         
     def checkSpace(self):
         space = self.player.currentSpace
-        if space.has wumpus ==True:
+        if space.hasWumpus ==True:
             self.player.alive = False
             return "You have been eaten by the Wumpus!"
         elif space.hasPit == True:
@@ -112,9 +112,9 @@ class Game:
         elif space.hasBats:
             self.player.currentSpace = random.choice(self.board.spaces)
         
-    def move_player(self, spaceId):
+    def movePlayer(self, spaceId):
         targetSpace = self.board.getSpace(spaceId)
-        self.player.move_to(targetSpace)
+        self.player.move(targetSpace)
         return self.checkSpace()
 
     def shoot_arrow(self, spaceId):
