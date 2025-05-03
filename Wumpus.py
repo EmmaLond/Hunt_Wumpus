@@ -29,6 +29,11 @@ class Space:
         self.wumpus = False
         self.pit = False
         self.bats = False
+        
+    def connect(self, other_space):
+        if other_space not in self.connections:
+            self.connections.append(other_space)
+            other_space.connections.append(self) 
 
     
     
