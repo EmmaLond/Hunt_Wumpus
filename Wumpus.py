@@ -23,17 +23,22 @@ class Player:
         
         
 class Space:
-    def__init__(self, spaceID, connections)
-    self.id = spaceID
-    self.connections = connections or []
-    self.wumpus = False
-    self.pit = False
-    self.bats = False
+    def__init__(self, spaceID):
+        self.id = spaceID
+        self.connections = []
+        self.wumpus = False
+        self.pit = False
+        self.bats = False
+
     
-class Game:
+    
+class Board:
     def__init__(self):
-    
-    def createBoard(self):
+        spaces = [Space[i] for i in range (15)]
+        self.connectSpace()
+        self.placeItems()
+        
+    def connectSpace(self):
         #for loop that creates the amount of spaces
         spaces = [Space[i] for i in range (15)]
         #list the space connections
@@ -54,9 +59,12 @@ class Game:
         room[14].connections = room[11],room[13],room[15],
         room[15].connections = room[14], room[16]
         room[16].connections = room[15],room[1]
+    
+    def placeItems():
         
-    def movePlayer(self, newSpaceId):
-        #player can only move to connecting spaces
+        
+    def getSpace(self, spaceId):
+        return self.
         
         
     def shootArrow(self, newSpaceId):
