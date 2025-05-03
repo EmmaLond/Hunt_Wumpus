@@ -72,21 +72,40 @@ class Board:
         
         random.shuffle(available_indices)
 
-        wumpus_index = availableSpaces.pop()
-        pit1_index = availableSpaces.pop()
-        pit2_index = availableSpaces.pop()
-        bat_index = availableSpaces.pop()
+        wumpusIndex = availableSpaces.pop()
+        pit1Index = availableSpaces.pop()
+        pit2Index = availableSpaces.pop()
+        batIndex = availableSpaces.pop()
 
-        self.spaces[wumpus_index].has_wumpus = True
-        self.spaces[pit1_index].has_pit = True
-        self.spaces[pit2_index].has_pit = True
-        self.spaces[bat_index].has_bats = True
+        self.spaces[wumpus_index].hasWumpus = True
+        self.spaces[pit1Index].hasPit = True
+        self.spaces[pit2Index].hasPit = True
+        self.spaces[batIndex].hasBats = True
             
             
     def getSpace(self, spaceId):
-        return self.
+        return self.spaces[spaceId]
         
         
-    def shootArrow(self, newSpaceId):
+class Game:
+    def__init__(self):
+        
+    def wumpusSpace(self):
+        #returns the value of the space that has the wumpus
+        
+        
+    def checkSpace(self):
+        space = self.player.currentSpace
+        if space.has wumpus = True:
+            self.player.alive = False
+            return "You have been eaten by the Wumpus!"
+        elif space.hasPit = True:
+            self.player.alive = False
+            return "You fell into a pit!"
+        elif space.hasBats:
+            self.player.currentSpace = random.choice(self.board.spaces)
+        
+    def movePlayer(self, spaceID):
+        #
         
         
