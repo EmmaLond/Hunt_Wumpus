@@ -4,3 +4,18 @@ from game import Game, Player, Space, Board
 
 class TestWumpus(unittest.TestCase):
     
+    def testPlayerMovement(self):
+        
+    def testInvalidMoves(self):
+        
+    def testShootArrow(self):
+        
+    def testZeroArrows(self):
+        
+    def testCheckWumpusSpace(self):
+        
+    def checkRandomizedBats(self):
+        
+
+if __name__ == '__main__':
+    unittest.main()
