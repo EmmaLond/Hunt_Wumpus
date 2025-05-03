@@ -1,6 +1,6 @@
 #Unit Test File
 import unittest
-from game import Game, Player, Space, Board
+from Wumpus import Game, Player, Space, Board
 
 class TestWumpus(unittest.TestCase):
     
@@ -10,9 +10,14 @@ class TestWumpus(unittest.TestCase):
         a.connect(b)
         player = Player(a)
         player.move(b)
-        self.assertEqual(player.current_space, b)
+        self.assertEqual(player.currentSpace, b)
         
-    #def testInvalidMoves(self):
+    def testInvalidMoves(self):
+        a = Space(1)
+        b = Space(2)
+        player = Player(a)
+        with self.assertRaises(ValueError):
+            player.move(b)
         
     #def testShootArrow(self):
         
