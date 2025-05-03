@@ -1,4 +1,6 @@
 #Wumpus Game
+import random
+
 class Player:
     def__init__(self, startingSpace):
         self.currentSpace = startingSpace
@@ -65,9 +67,22 @@ class Board:
         room[15].connections = room[14], room[16]
         room[16].connections = room[15],room[1]
     
-    def placeItems():
+    def placeItems(self):
+        availableSpaces = list(range(1,16))
         
-        
+        random.shuffle(available_indices)
+
+        wumpus_index = availableSpaces.pop()
+        pit1_index = availableSpaces.pop()
+        pit2_index = availableSpaces.pop()
+        bat_index = availableSpaces.pop()
+
+        self.spaces[wumpus_index].has_wumpus = True
+        self.spaces[pit1_index].has_pit = True
+        self.spaces[pit2_index].has_pit = True
+        self.spaces[bat_index].has_bats = True
+            
+            
     def getSpace(self, spaceId):
         return self.
         
