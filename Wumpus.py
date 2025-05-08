@@ -125,3 +125,47 @@ class Game:
             return "You killed the Wumpus! You win!"
         else:
             return "Missed. The Wumpus might wake up..."
+        
+        
+if __name__ == "__main__":
+    game = Game()
+
+    print("Welcome to Hunt the Wumpus!")
+    print("You have 3 arrows. Try to kill the Wumpus!")
+
+    while game.player.alive:
+        current = game.player.currentSpace
+        connected_ids = [space.id for space in current.connections]
+
+        print(f"\nYou are in room {current.id}.")
+        print(f"Tunnels lead to: {connected_ids}")
+        print(f"Arrows left: {game.player.arrows}")
+
+        action = input("Move or Shoot? (m/s): ").strip().lower()
+
+        if action not in ['m', 's']:
+            print("Invalid action. Please choose 'm' to move or 's' to shoot.")
+            continue
+
+        try:
+            target = int(input(f"Enter the room number to {'move to' if action == 'm' else 'shoot into'}: "))
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
+
+        if target not in [space.id for space in current.connections]:
+            print("That room is not connected to your current room.")
+            continue
+
+        if action == 'm':
+            result = game.movePlayer(target)
+            if result:
+                print(result)
+        else:
+            result = game.shootArrow(target)
+            print(result)
+            if "win" in result.lower():
+                break
+
+    if not game.player.alive:
+        print("Game Over.")
