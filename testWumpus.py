@@ -50,9 +50,6 @@ class TestWumpus(unittest.TestCase):
         result = game.shootArrow(1)
         self.assertIn("missed", result.lower())
         
-    #def testCheckWumpusSpace(self):
-        
-    #def checkRandomizedBats(self):
         
 
 if __name__ == '__main__':
